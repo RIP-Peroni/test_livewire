@@ -26,6 +26,7 @@ class Comments extends Component
                 'creator' => 'Smb else',
             ]
         );
+        $this->newComment = '';
     }
 
     public function render()
