@@ -4,28 +4,25 @@ namespace App\Http\Livewire;
 
 use Illuminate\Support\Carbon;
 use Livewire\Component;
+use App\Models\Comment;
 
 class Comments extends Component
 {
-    public $comments = [
-        [
-            'body' => 'lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi ex cupditatte quo commodi aspernatur delectus veniam necessitatibus.',
-            'created_at' => '3 min ago',
-            'creator' => 'Yuriy',
-        ]
-    ];
+    public $comments;
 
     public $newComment;
 
+    public function mount()
+    {
+        $initialComments = Comment::latest()->get();
+        // dd($initialComments);
+        $this->comments = $initialComments;
+    }
+
     public function addComment()
     {
-        array_unshift($this->comments, 
-            [
-                'body' => $this->newComment,
-                'created_at' => Carbon::now()->diffForHumans(),
-                'creator' => 'Smb else',
-            ]
-        );
+        $createdComment = Comment::create(['body' => $this->newComment, 'user_id' => 1]);
+        $this->comments->prepend($createdComment);
         $this->newComment = '';
     }
 

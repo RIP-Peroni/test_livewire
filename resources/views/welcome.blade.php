@@ -13,6 +13,6 @@
     </head>
     <body class="antialiased">
         <livewire:comments />
-        @livewireScripts
+        <livewire:scripts />
     </body>
 </html>
