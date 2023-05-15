@@ -37,4 +37,6 @@
         <img src="" />
     </div>
     @endforeach
+
+    {{ $comments->links() }}
 </div>
