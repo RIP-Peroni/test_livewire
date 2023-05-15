@@ -25,8 +25,8 @@
                     {{ $comment->created_at->diffForHumans() }}
                 </p>
             </div>
-            <i class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"
-                wire:click="remove()"></i>
+            <span class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"
+                wire:click="removeComment({{ $comment->id }})"></span>
         </div>
         <p class="text-gray-800">{{ $comment->body }}</p>
         <img src="" />
