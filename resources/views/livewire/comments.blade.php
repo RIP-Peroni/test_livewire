@@ -2,10 +2,15 @@
     <h1 class="text-3xl">Comments</h1>
     @error('newComment') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
     <div>
-        @if (session()->has('message'))
-        <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
-            
-        </div>
+        @if (session()->has('comment added successfully'))
+            <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
+                {{ session('comment added successfully') }}
+            </div>
+        @endif
+        @if (session()->has('comment removed successfully'))
+            <div class="p-3 bg-red-300 text-red-800 rounded shadow-sm">
+                {{ session('comment removed successfully') }}
+            </div>
         @endif
     </div>
 
