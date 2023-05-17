@@ -12,7 +12,8 @@ class Comment extends Model
     protected $fillable = [
         'body',
         'user_id',
-        'image'
+        'image',
+        'support_ticket_id',
     ];
 
     public function creator()

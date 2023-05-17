@@ -45,7 +45,6 @@
         @if($comment->image)
         <img src="{{ asset('storage/' . $comment->image) }}" alt="">
         @endif
-        <img src="" />
     </div>
     @endforeach
 
