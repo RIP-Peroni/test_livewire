@@ -42,6 +42,9 @@
                 wire:click="removeComment({{ $comment->id }})"></span>
         </div>
         <p class="text-gray-800">{{ $comment->body }}</p>
+        @if($comment->image)
+        <img src="{{ asset('storage/' . $comment->image) }}" alt="">
+        @endif
         <img src="" />
     </div>
     @endforeach
