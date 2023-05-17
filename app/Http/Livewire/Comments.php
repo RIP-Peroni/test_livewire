@@ -4,17 +4,27 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Comment;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 class Comments extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $newComment;
+    public $image;
+
+    protected $listeners = ['fileUpload' => 'handleFileUpload'];
 
     protected $rules = [
         'newComment' => 'required|max:255',
     ];
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
+    }
 
     public function updated($newComment)
     {
@@ -40,7 +50,7 @@ class Comments extends Component
     public function render()
     {
         return view('livewire.comments', [
-            'comments' => Comment::latest()->paginate(2),
+            'comments' => Comment::latest()->paginate(5),
         ]);
     }
 }
