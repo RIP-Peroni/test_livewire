@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home')->middleware('auth');
 
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register', Register::class)->name('register');
+});

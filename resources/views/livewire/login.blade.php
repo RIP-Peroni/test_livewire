@@ -15,6 +15,9 @@
                     <input type="password" class="p-2 rounded border shadow-sm w-full" placeholder="Password"
                         wire:model="form.password" />
                     @error('form.password') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
+                    @if (session()->has('auth_error'))
+                        <span class="text-red-500 text-xs">{{ session('auth_error') }}</span>
+                    @endif
                 </div>
             </div>
             <div class="flex justify-around my-8">
