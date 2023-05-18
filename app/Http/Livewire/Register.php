@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
 
 class Register extends Component
@@ -22,7 +23,8 @@ class Register extends Component
     public function submit()
     {
         $this->validate();
-        dd($this->form);
+        User::create($this->form);
+        return redirect()->to(route('login'));
     }
     public function render()
     {
